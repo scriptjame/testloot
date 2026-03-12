@@ -87,20 +87,20 @@ box.Text = ""
 
 Instance.new("UICorner",box)
 
--- COPY BUTTON
-local copy = Instance.new("TextButton")
-copy.Parent = frame
-copy.Size = UDim2.new(0,30,0,30)
-copy.Position = UDim2.new(0.88,0,0.38,2)
-copy.Text = "📋"
-copy.BackgroundTransparency = 1
+-- PASTE BUTTON
+local paste = Instance.new("TextButton")
+paste.Parent = frame
+paste.Size = UDim2.new(0,30,0,30)
+paste.Position = UDim2.new(0.88,0,0.38,2)
+paste.Text = "📋"
+paste.BackgroundTransparency = 1
 
-copy.MouseButton1Click:Connect(function()
+paste.MouseButton1Click:Connect(function()
 
 	clickSound:Play()
 
-	if setclipboard then
-		setclipboard(getKeyLink)
+	if getclipboard then
+		box.Text = getclipboard()
 	end
 
 end)
