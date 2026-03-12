@@ -22,7 +22,7 @@ frame.BackgroundColor3 = Color3.fromRGB(20,20,25)
 
 Instance.new("UICorner",frame).CornerRadius = UDim.new(0,10)
 
--- BORDER GLOW
+-- BORDER
 local stroke = Instance.new("UIStroke", frame)
 stroke.Color = Color3.fromRGB(90,100,255)
 stroke.Thickness = 1
@@ -76,42 +76,16 @@ box.Parent = frame
 box.Size = UDim2.new(0.75,0,0,35)
 box.Position = UDim2.new(0.12,0,0.38,0)
 
--- chỉ để hiển thị cho đẹp
 box.PlaceholderText = "0000-0000-0000"
-
 box.BackgroundColor3 = Color3.fromRGB(30,30,35)
 box.TextColor3 = Color3.new(1,1,1)
 box.Font = Enum.Font.GothamBold
 box.TextSize = 16
 
--- để người dùng click vào nhập bình thường
 box.ClearTextOnFocus = false
 box.Text = ""
 
 Instance.new("UICorner",box)
-
--- AUTO FORMAT KEY
-box:GetPropertyChangedSignal("Text"):Connect(function()
-
-	local text = box.Text:gsub("%D","")
-
-	if #text > 12 then
-		text = text:sub(1,12)
-	end
-
-	local formatted = text
-
-	if #text > 4 then
-		formatted = text:sub(1,4).."-"..text:sub(5)
-	end
-
-	if #text > 8 then
-		formatted = text:sub(1,4).."-"..text:sub(5,8).."-"..text:sub(9)
-	end
-
-	box.Text = formatted
-
-end)
 
 -- COPY BUTTON
 local copy = Instance.new("TextButton")
@@ -131,7 +105,7 @@ copy.MouseButton1Click:Connect(function()
 
 end)
 
--- LOOTLAB TEXT (đẹp hơn)
+-- LOOTLAB TEXT
 local loot = Instance.new("TextLabel")
 loot.Parent = frame
 loot.Position = UDim2.new(0.1,0,0.58,0)
