@@ -1,11 +1,13 @@
 -- SHIBA GET KEY GUI
 
-local correctKey = "8s201kbvyj4d" -- 🔴 ĐỔI KEY MỖI NGÀY Ở ĐÂY
-local getKeyLink = "https://scriptjame.github.io/key/" -- web chứa key
+local getKeyLink = "https://lootdest.org/s?zY7I2x6A"
+local keyURL = "https://raw.githubusercontent.com/scriptjame/key/main/key.txt"
+
+local correctKey = game:HttpGet(keyURL)
+correctKey = correctKey:gsub("%s+","")
 
 local TweenService = game:GetService("TweenService")
 
--- CLICK SOUND
 local clickSound = Instance.new("Sound")
 clickSound.SoundId = "rbxassetid://12221967"
 clickSound.Volume = 1
@@ -97,16 +99,6 @@ paste.MouseButton1Click:Connect(function()
 	end
 
 end)
-
-local loot = Instance.new("TextLabel")
-loot.Parent = frame
-loot.Position = UDim2.new(0.1,0,0.58,0)
-loot.Size = UDim2.new(0.4,0,0,20)
-loot.BackgroundTransparency = 1
-loot.Text = "LootLabs"
-loot.Font = Enum.Font.GothamBold
-loot.TextSize = 15
-loot.TextColor3 = Color3.fromRGB(170,120,255)
 
 local get = Instance.new("TextButton")
 get.Parent = frame
