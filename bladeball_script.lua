@@ -3,16 +3,37 @@
 local correctKey = "shiba123"
 local getKeyLink = "https://loot-link.com/s?On71Kevv"
 
+local TweenService = game:GetService("TweenService")
+
+-- CLICK SOUND
+local clickSound = Instance.new("Sound")
+clickSound.SoundId = "rbxassetid://12221967"
+clickSound.Volume = 1
+clickSound.Parent = game:GetService("CoreGui")
+
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
 
 local frame = Instance.new("Frame")
 frame.Parent = gui
-frame.Size = UDim2.new(0,340,0,200)
+frame.Size = UDim2.new(0,0,0,0)
 frame.Position = UDim2.new(0.5,-170,0.5,-100)
 frame.BackgroundColor3 = Color3.fromRGB(20,20,25)
 
 Instance.new("UICorner",frame).CornerRadius = UDim.new(0,10)
+
+-- GLOW BORDER
+local stroke = Instance.new("UIStroke", frame)
+stroke.Color = Color3.fromRGB(80,90,255)
+stroke.Thickness = 1
+stroke.Transparency = 0.5
+
+-- OPEN ANIMATION
+TweenService:Create(
+	frame,
+	TweenInfo.new(0.35, Enum.EasingStyle.Quad),
+	{Size = UDim2.new(0,340,0,200)}
+):Play()
 
 -- TITLE
 local title = Instance.new("TextLabel")
@@ -34,6 +55,7 @@ close.BackgroundTransparency = 1
 close.TextColor3 = Color3.new(1,1,1)
 
 close.MouseButton1Click:Connect(function()
+	clickSound:Play()
 	gui:Destroy()
 end)
 
@@ -68,6 +90,8 @@ copy.Text = "📋"
 copy.BackgroundTransparency = 1
 
 copy.MouseButton1Click:Connect(function()
+	clickSound:Play()
+
 	if setclipboard then
 		setclipboard(getKeyLink)
 	end
@@ -97,6 +121,8 @@ Instance.new("UICorner",get)
 
 get.MouseButton1Click:Connect(function()
 
+	clickSound:Play()
+
 	if setclipboard then
 		setclipboard(getKeyLink)
 	end
@@ -122,7 +148,16 @@ verify.TextColor3 = Color3.new(1,1,1)
 
 Instance.new("UICorner",verify)
 
+-- GRADIENT
+local grad = Instance.new("UIGradient", verify)
+grad.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(80,110,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(40,70,255))
+}
+
 verify.MouseButton1Click:Connect(function()
+
+	clickSound:Play()
 
 	local entered = box.Text
 
