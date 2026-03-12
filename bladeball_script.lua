@@ -1,7 +1,6 @@
 -- SHIBA GET KEY GUI
 
-local correctKey = "shiba123"
-local getKeyLink = "https://loot-link.com/s?On71Kevv"
+local getKeyLink = "https://lootdest.org/s?zY7I2x6A"
 
 local TweenService = game:GetService("TweenService")
 
@@ -172,7 +171,21 @@ verify.MouseButton1Click:Connect(function()
 
 	local entered = box.Text
 
-	if entered == correctKey then
+	-- GENERATE DAILY KEY
+	local charset = "abcdefghijklmnopqrstuvwxyz0123456789"
+	local date = os.date("!*t")
+	local seed = date.day + (date.month * 50) + (date.year * 1000)
+
+	math.randomseed(seed)
+
+	local generated = ""
+
+	for i = 1,12 do
+		local rand = math.random(1,#charset)
+		generated = generated .. charset:sub(rand,rand)
+	end
+
+	if entered == generated then
 
 		gui:Destroy()
 
