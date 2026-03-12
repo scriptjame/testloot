@@ -22,7 +22,7 @@ if box.Text == correctKey then
 
 gui:Destroy()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptjame/testloot/main/bladeball_script.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptjame/testloot/main/testloot.lua"))()
 
 end
 
