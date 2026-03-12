@@ -22,9 +22,9 @@ frame.BackgroundColor3 = Color3.fromRGB(20,20,25)
 
 Instance.new("UICorner",frame).CornerRadius = UDim.new(0,10)
 
--- GLOW BORDER
+-- BORDER GLOW
 local stroke = Instance.new("UIStroke", frame)
-stroke.Color = Color3.fromRGB(80,90,255)
+stroke.Color = Color3.fromRGB(90,100,255)
 stroke.Thickness = 1
 stroke.Transparency = 0.5
 
@@ -42,7 +42,7 @@ title.Size = UDim2.new(1,0,0,40)
 title.BackgroundTransparency = 1
 title.Text = "Shiba"
 title.Font = Enum.Font.GothamBold
-title.TextSize = 18
+title.TextSize = 20
 title.TextColor3 = Color3.new(1,1,1)
 
 -- CLOSE
@@ -81,7 +81,7 @@ box.TextColor3 = Color3.new(1,1,1)
 
 Instance.new("UICorner",box)
 
--- COPY
+-- COPY BUTTON
 local copy = Instance.new("TextButton")
 copy.Parent = frame
 copy.Size = UDim2.new(0,30,0,30)
@@ -90,25 +90,27 @@ copy.Text = "📋"
 copy.BackgroundTransparency = 1
 
 copy.MouseButton1Click:Connect(function()
+
 	clickSound:Play()
 
 	if setclipboard then
 		setclipboard(getKeyLink)
 	end
+
 end)
 
--- LOOTLAB TEXT
+-- LOOTLAB TEXT (đẹp hơn)
 local loot = Instance.new("TextLabel")
 loot.Parent = frame
 loot.Position = UDim2.new(0.1,0,0.58,0)
 loot.Size = UDim2.new(0.4,0,0,20)
 loot.BackgroundTransparency = 1
-loot.Text = "🟣 Lootlab"
-loot.Font = Enum.Font.Gotham
-loot.TextSize = 14
-loot.TextColor3 = Color3.fromRGB(200,200,200)
+loot.Text = "LootLabs"
+loot.Font = Enum.Font.GothamBold
+loot.TextSize = 15
+loot.TextColor3 = Color3.fromRGB(170,120,255)
 
--- GET KEY
+-- GET KEY BUTTON
 local get = Instance.new("TextButton")
 get.Parent = frame
 get.Size = UDim2.new(0.35,0,0,35)
@@ -143,17 +145,20 @@ verify.Parent = frame
 verify.Size = UDim2.new(0.45,0,0,35)
 verify.Position = UDim2.new(0.50,0,0.72,0)
 verify.Text = "Verify Key"
-verify.BackgroundColor3 = Color3.fromRGB(70,90,255)
+verify.Font = Enum.Font.GothamBold
+verify.TextSize = 15
 verify.TextColor3 = Color3.new(1,1,1)
+verify.BackgroundColor3 = Color3.fromRGB(70,90,255)
 
 Instance.new("UICorner",verify)
 
--- GRADIENT
-local grad = Instance.new("UIGradient", verify)
+-- VERIFY GRADIENT
+local grad = Instance.new("UIGradient")
 grad.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(80,110,255)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(40,70,255))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(100,130,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(60,80,255))
 }
+grad.Parent = verify
 
 verify.MouseButton1Click:Connect(function()
 
