@@ -10,6 +10,20 @@ clickSound.SoundId = "rbxassetid://12221967"
 clickSound.Volume = 1
 clickSound.Parent = game:GetService("CoreGui")
 
+-- GENERATE DAILY KEY
+local charset = "abcdefghijklmnopqrstuvwxyz0123456789"
+local date = os.date("!*t")
+local seed = date.day + (date.month * 50) + (date.year * 1000)
+
+math.randomseed(seed)
+
+local dailyKey = ""
+
+for i = 1,12 do
+	local rand = math.random(1,#charset)
+	dailyKey = dailyKey .. charset:sub(rand,rand)
+end
+
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
 
@@ -75,7 +89,7 @@ box.Parent = frame
 box.Size = UDim2.new(0.75,0,0,35)
 box.Position = UDim2.new(0.12,0,0.38,0)
 
-box.PlaceholderText = "0000-0000-0000"
+box.PlaceholderText = "Paste your key"
 box.BackgroundColor3 = Color3.fromRGB(30,30,35)
 box.TextColor3 = Color3.new(1,1,1)
 box.Font = Enum.Font.GothamBold
@@ -171,21 +185,7 @@ verify.MouseButton1Click:Connect(function()
 
 	local entered = box.Text
 
-	-- GENERATE DAILY KEY
-	local charset = "abcdefghijklmnopqrstuvwxyz0123456789"
-	local date = os.date("!*t")
-	local seed = date.day + (date.month * 50) + (date.year * 1000)
-
-	math.randomseed(seed)
-
-	local generated = ""
-
-	for i = 1,12 do
-		local rand = math.random(1,#charset)
-		generated = generated .. charset:sub(rand,rand)
-	end
-
-	if entered == generated then
+	if entered == dailyKey then
 
 		gui:Destroy()
 
