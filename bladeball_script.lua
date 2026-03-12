@@ -75,12 +75,18 @@ local box = Instance.new("TextBox")
 box.Parent = frame
 box.Size = UDim2.new(0.75,0,0,35)
 box.Position = UDim2.new(0.12,0,0.38,0)
+
+-- chỉ để hiển thị cho đẹp
 box.PlaceholderText = "0000-0000-0000"
+
 box.BackgroundColor3 = Color3.fromRGB(30,30,35)
 box.TextColor3 = Color3.new(1,1,1)
 box.Font = Enum.Font.GothamBold
 box.TextSize = 16
+
+-- để người dùng click vào nhập bình thường
 box.ClearTextOnFocus = false
+box.Text = ""
 
 Instance.new("UICorner",box)
 
