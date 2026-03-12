@@ -13,13 +13,25 @@ clickSound.Parent = game:GetService("CoreGui")
 -- GENERATE DAILY KEY (MATCH WEBSITE)
 local charset = "abcdefghijklmnopqrstuvwxyz0123456789"
 local date = os.date("!*t")
-local seed = date.day + (date.month * 50) + (date.year * 1000)
+
+local day = date.day
+local month = date.month
+local year = date.year
+
+local seed = day + (month * 50) + (year * 1000)
 
 local dailyKey = ""
 
 for i = 1,12 do
-	local index = (seed + i * 7) % #charset + 1
+
+	local index = (seed + i * 7) % #charset
+	
+	if index == 0 then
+		index = #charset
+	end
+	
 	dailyKey = dailyKey .. charset:sub(index,index)
+
 end
 
 local gui = Instance.new("ScreenGui")
