@@ -75,11 +75,37 @@ local box = Instance.new("TextBox")
 box.Parent = frame
 box.Size = UDim2.new(0.75,0,0,35)
 box.Position = UDim2.new(0.12,0,0.38,0)
-box.PlaceholderText = "Paste your key here"
+box.PlaceholderText = "0000-0000-0000"
 box.BackgroundColor3 = Color3.fromRGB(30,30,35)
 box.TextColor3 = Color3.new(1,1,1)
+box.Font = Enum.Font.GothamBold
+box.TextSize = 16
+box.ClearTextOnFocus = false
 
 Instance.new("UICorner",box)
+
+-- AUTO FORMAT KEY
+box:GetPropertyChangedSignal("Text"):Connect(function()
+
+	local text = box.Text:gsub("%D","")
+
+	if #text > 12 then
+		text = text:sub(1,12)
+	end
+
+	local formatted = text
+
+	if #text > 4 then
+		formatted = text:sub(1,4).."-"..text:sub(5)
+	end
+
+	if #text > 8 then
+		formatted = text:sub(1,4).."-"..text:sub(5,8).."-"..text:sub(9)
+	end
+
+	box.Text = formatted
+
+end)
 
 -- COPY BUTTON
 local copy = Instance.new("TextButton")
