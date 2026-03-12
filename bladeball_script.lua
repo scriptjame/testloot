@@ -10,18 +10,16 @@ clickSound.SoundId = "rbxassetid://12221967"
 clickSound.Volume = 1
 clickSound.Parent = game:GetService("CoreGui")
 
--- GENERATE DAILY KEY
+-- GENERATE DAILY KEY (MATCH WEBSITE)
 local charset = "abcdefghijklmnopqrstuvwxyz0123456789"
 local date = os.date("!*t")
 local seed = date.day + (date.month * 50) + (date.year * 1000)
 
-math.randomseed(seed)
-
 local dailyKey = ""
 
 for i = 1,12 do
-	local rand = math.random(1,#charset)
-	dailyKey = dailyKey .. charset:sub(rand,rand)
+	local index = (seed + i * 7) % #charset + 1
+	dailyKey = dailyKey .. charset:sub(index,index)
 end
 
 local gui = Instance.new("ScreenGui")
