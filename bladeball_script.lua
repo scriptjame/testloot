@@ -1,20 +1,26 @@
 -- SHIBA KEY SYSTEM
 
 local keyURL = "https://raw.githubusercontent.com/scriptjame/key/main/key.txt"
-local getKeyLink = "https://lootdest.org/s?zY7I2x6A"
+local getKeyLink = "https://loot-link.com/s?On71Kevv"
 
 local correctKey = game:HttpGet(keyURL)
 correctKey = correctKey:gsub("%s+","")
 
--- nếu đã có key đúng thì chạy script luôn
-if getgenv().ShibaKey == correctKey then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptjame/testloot/main/testloot.lua"))()
-	return
+local keyFile = "ShibaKey.txt"
+
+-- kiểm tra key đã lưu
+if isfile and isfile(keyFile) then
+
+    local savedKey = readfile(keyFile)
+
+    if savedKey == correctKey then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptjame/testloot/main/testloot.lua"))()
+        return
+    end
+
 end
 
 -- GUI
-local TweenService = game:GetService("TweenService")
-
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
 
@@ -55,15 +61,15 @@ Instance.new("UICorner",get)
 
 get.MouseButton1Click:Connect(function()
 
-	if setclipboard then
-		setclipboard(getKeyLink)
-	end
+    if setclipboard then
+        setclipboard(getKeyLink)
+    end
 
-	game.StarterGui:SetCore("SendNotification",{
-		Title = "Shiba",
-		Text = "Key link copied",
-		Duration = 4
-	})
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "Shiba",
+        Text = "Key link copied",
+        Duration = 4
+    })
 
 end)
 
@@ -77,22 +83,24 @@ Instance.new("UICorner",verify)
 
 verify.MouseButton1Click:Connect(function()
 
-	if box.Text == correctKey then
+    if box.Text == correctKey then
 
-		getgenv().ShibaKey = correctKey
+        if writefile then
+            writefile(keyFile, correctKey)
+        end
 
-		gui:Destroy()
+        gui:Destroy()
 
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptjame/testloot/main/testloot.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptjame/testloot/main/testloot.lua"))()
 
-	else
+    else
 
-		game.StarterGui:SetCore("SendNotification",{
-			Title = "Shiba",
-			Text = "Invalid Key",
-			Duration = 4
-		})
+        game.StarterGui:SetCore("SendNotification",{
+            Title = "Shiba",
+            Text = "Invalid Key",
+            Duration = 4
+        })
 
-	end
+    end
 
 end)
