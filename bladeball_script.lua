@@ -151,7 +151,7 @@ linkv.MouseButton1Click:Connect(function()
 
 end)
 
--- FREE BUTTON (đặt ở giữa cho gọn GUI)
+-- FREE BUTTON (FIXED)
 local free = Instance.new("TextButton")
 free.Parent = frame
 free.Size = UDim2.new(0.28,0,0,35)
@@ -173,6 +173,10 @@ free.MouseButton1Click:Connect(function()
 		Text = "Running free script...",
 		Duration = 4
 	})
+
+	gui:Destroy()
+
+	task.wait(0.3)
 
 	loadstring(game:HttpGet("https://wings.ac/loader"))()
 
