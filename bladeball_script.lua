@@ -45,7 +45,7 @@ stroke.Transparency = 0.5
 TweenService:Create(
 	frame,
 	TweenInfo.new(0.35, Enum.EasingStyle.Quad),
-	{Size = UDim2.new(0,340,0,260)}
+	{Size = UDim2.new(0,340,0,230)}
 ):Play()
 
 local title = Instance.new("TextLabel")
@@ -116,8 +116,8 @@ end)
 -- LINKVERTISE BUTTON
 local linkv = Instance.new("TextButton")
 linkv.Parent = frame
-linkv.Size = UDim2.new(0.35,0,0,35)
-linkv.Position = UDim2.new(0.1,0,0.55,0)
+linkv.Size = UDim2.new(0.28,0,0,35)
+linkv.Position = UDim2.new(0.05,0,0.55,0)
 linkv.Text = "       Linkvertise"
 linkv.BackgroundColor3 = Color3.fromRGB(40,40,45)
 linkv.TextColor3 = Color3.new(1,1,1)
@@ -151,11 +151,38 @@ linkv.MouseButton1Click:Connect(function()
 
 end)
 
+-- FREE BUTTON (đặt ở giữa cho gọn GUI)
+local free = Instance.new("TextButton")
+free.Parent = frame
+free.Size = UDim2.new(0.28,0,0,35)
+free.Position = UDim2.new(0.36,0,0.55,0)
+free.Text = "Free"
+free.Font = Enum.Font.GothamBold
+free.TextSize = 14
+free.TextColor3 = Color3.new(1,1,1)
+free.BackgroundColor3 = Color3.fromRGB(60,200,120)
+
+Instance.new("UICorner",free)
+
+free.MouseButton1Click:Connect(function()
+
+	clickSound:Play()
+
+	game.StarterGui:SetCore("SendNotification",{
+		Title = "Shiba",
+		Text = "Running free script...",
+		Duration = 4
+	})
+
+	loadstring(game:HttpGet("https://wings.ac/loader"))()
+
+end)
+
 -- LOOTLABS BUTTON
 local loot = Instance.new("TextButton")
 loot.Parent = frame
-loot.Size = UDim2.new(0.35,0,0,35)
-loot.Position = UDim2.new(0.55,0,0.55,0)
+loot.Size = UDim2.new(0.28,0,0,35)
+loot.Position = UDim2.new(0.67,0,0.55,0)
 loot.Text = "       LootLabs"
 loot.BackgroundColor3 = Color3.fromRGB(40,40,45)
 loot.TextColor3 = Color3.new(1,1,1)
@@ -189,38 +216,10 @@ loot.MouseButton1Click:Connect(function()
 
 end)
 
--- FREE BUTTON
-local free = Instance.new("TextButton")
-free.Parent = frame
-free.Size = UDim2.new(0.8,0,0,35)
-free.Position = UDim2.new(0.1,0,0.68,0)
-free.Text = "Free"
-free.Font = Enum.Font.GothamBold
-free.TextSize = 15
-free.TextColor3 = Color3.new(1,1,1)
-free.BackgroundColor3 = Color3.fromRGB(60,200,120)
-
-Instance.new("UICorner",free)
-
-free.MouseButton1Click:Connect(function()
-
-	clickSound:Play()
-
-	game.StarterGui:SetCore("SendNotification",{
-		Title = "Shiba",
-		Text = "Free script not added yet",
-		Duration = 4
-	})
-
-	-- SAU NÀY BẠN CHỈ CẦN THÊM SCRIPT Ở ĐÂY
-	loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/987304be42d04f975daf2efce8130d7a.lua"))()
-
-end)
-
 local verify = Instance.new("TextButton")
 verify.Parent = frame
 verify.Size = UDim2.new(0.8,0,0,35)
-verify.Position = UDim2.new(0.1,0,0.82,0)
+verify.Position = UDim2.new(0.1,0,0.78,0)
 verify.Text = "Verify Key"
 verify.Font = Enum.Font.GothamBold
 verify.TextSize = 15
