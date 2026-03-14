@@ -178,7 +178,7 @@ free.MouseButton1Click:Connect(function()
 
 	task.wait(0.3)
 
-	loadstring(game:HttpGet("https://wings.ac/loader"))()
+	loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/987304be42d04f975daf2efce8130d7a.lua"))()
 
 end)
 
